@@ -13,7 +13,7 @@ Random.seed!(123) # For reproducibility.
 Z = 50 # Predator-prey ratio.
 S = 30 # Species richness.
 C = 0.1 # Trophic connectance.
-t_max = 1 #10_000
+t_max = 10_000
 intensity = 1 # Facilitation intensity.
 n_rep = 10 # Number of replicates per number of facilitation interactions.
 model = load_object("data/model.jld2")
@@ -46,6 +46,6 @@ fig = Figure();
 ax = Axis(fig[1, 1], xlabel="Number of facilitation links", ylabel="Species persistence")
 scatter!(data.l_facilitation, data.persistence_mean)
 
-script_name = split(@__FILE__, "/")[end][begin:end-3]
+script_name = split(@__FILE__, "/")[end][6:end-3]
 save("figures/$script_name.png", fig)
 CSV.write("data/$script_name.csv", df)
