@@ -27,7 +27,7 @@ Threads.@threads for i in eachindex(l_fac_values)
     l_facilitation = l_fac_values[i]
     df_tmp = DataFrame(; l_facilitation=Float64[], persistence=Float64[], replicate=Int64[])
     for replicate in 1:n_rep
-        @info replicate
+        # @info replicate
         A = get_facilitation_matrix(model, l_facilitation)
         model_fac = default_model(fw, BodyMass(; Z), ClassicResponse(; c=0.8), FacilitationLayer(; A, intensity))
         B0 = rand(Uniform(0.1, 1), S)
